@@ -1,5 +1,5 @@
 {
-  "name": "ip-geo",
+  "name": "@bredele/ip-geo",
   "version": "1.0.0",
   "files": [
     "dist"
@@ -40,5 +40,8 @@
       "require": "./dist/cjs/index.js",
       "types": "./dist/types/index.d.ts"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
