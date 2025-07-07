@@ -1,113 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IP Geolocation Test</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            min-height: 50px;
-        }
-        .result.success {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-        }
-        .result.error {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-        .result.loading {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            color: #0c5460;
-        }
-        .location-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .location-item {
-            padding: 8px;
-            background-color: rgba(255,255,255,0.5);
-            border-radius: 3px;
-        }
-        .location-item strong {
-            display: block;
-            margin-bottom: 2px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-right: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+      .result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        min-height: 50px;
+      }
+      .result.success {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+      .result.error {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+      .result.loading {
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+      }
+      .location-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .location-item {
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 3px;
+      }
+      .location-item strong {
+        display: block;
+        margin-bottom: 2px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>IP Geolocation Test</h1>
-        
-        <div class="form-group">
-            <label for="ipInput">IP Address (leave empty for current IP):</label>
-            <input type="text" id="ipInput" placeholder="e.g., 8.8.8.8">
-        </div>
-        
-        <button onclick="getCurrentLocation()">Get Current Location (Auto-detect IP)</button>
-        <button onclick="getLocationForIP()">Get Location for IP</button>
-        <button onclick="testWithGoogle()">Test with Google DNS (8.8.8.8)</button>
-        
-        <div id="result" class="result" style="display: none;"></div>
+      <h1>IP Geolocation Test</h1>
+
+      <div class="form-group">
+        <label for="ipInput">IP Address (leave empty for current IP):</label>
+        <input type="text" id="ipInput" placeholder="e.g., 8.8.8.8" />
+      </div>
+
+      <button onclick="getCurrentLocation()">
+        Get Current Location (Auto-detect IP)
+      </button>
+      <button onclick="getLocationForIP()">Get Location for IP</button>
+      <button onclick="testWithGoogle()">Test with Google DNS (8.8.8.8)</button>
+
+      <div id="result" class="result" style="display: none"></div>
     </div>
 
     <!-- 
@@ -119,105 +121,160 @@
     Then visit: http://localhost:8000/lib/test.html
     -->
     <script type="module">
-        import location from '../dist/esm/index.js';
+      console.log('Starting module script...');
+      
+      // Define helper functions FIRST
+      window.showLoading = function() {
+        console.log('showLoading called');
+        const resultDiv = document.getElementById("result");
+        resultDiv.style.display = "block";
+        resultDiv.className = "result loading";
+        resultDiv.innerHTML = "🔄 Detecting IP address and loading location data...";
+      };
+
+      window.showSuccess = function(data) {
+        console.log('showSuccess called with:', data);
+        const resultDiv = document.getElementById("result");
+        resultDiv.style.display = "block";
+        resultDiv.className = "result success";
+        resultDiv.innerHTML = `
+          <h3>✅ Location Found!</h3>
+          <div class="location-info">
+            <div class="location-item">
+              <strong>IP Address:</strong>
+              ${data.ip} ${data.ip.includes("192.168.") || data.ip.includes("10.") || data.ip.includes("172.") ? "(Private/Local)" : "(Public)"}
+            </div>
+            <div class="location-item">
+              <strong>City:</strong>
+              ${data.city || "N/A"}
+            </div>
+            <div class="location-item">
+              <strong>Region:</strong>
+              ${data.region || "N/A"}
+            </div>
+            <div class="location-item">
+              <strong>Country:</strong>
+              ${data.country || "N/A"}
+            </div>
+            <div class="location-item">
+              <strong>Latitude:</strong>
+              ${data.lat || "N/A"}
+            </div>
+            <div class="location-item">
+              <strong>Longitude:</strong>
+              ${data.lon || "N/A"}
+            </div>
+            <div class="location-item">
+              <strong>Timezone:</strong>
+              ${data.timezone || "N/A"}
+            </div>
+            <div class="location-item">
+              <strong>ISP:</strong>
+              ${data.isp || "N/A"}
+            </div>
+          </div>
+        `;
+      };
+
+      window.showError = function(message) {
+        console.error('showError called with:', message);
+        const resultDiv = document.getElementById("result");
+        resultDiv.style.display = "block";
+        resultDiv.className = "result error";
+        resultDiv.innerHTML = `
+          <h3>❌ Error</h3>
+          <p>${message}</p>
+          <p><small>Check browser console for more details</small></p>
+        `;
+      };
+
+      // Try to import the module with error handling
+      try {
+        console.log('Attempting to import module...');
+        const locationModule = await import("../dist/esm/index.js");
+        console.log('Module imported successfully:', locationModule);
         
-        window.ipLocation = location;
+        window.ipLocation = locationModule.default;
+        console.log('ipLocation set to:', window.ipLocation);
         
-        window.getCurrentLocation = async function() {
-            showLoading();
-            try {
-                const result = await window.ipLocation();
-                showSuccess(result);
-            } catch (error) {
-                showError(error.message);
-            }
-        };
-        
-        window.getLocationForIP = async function() {
-            const ip = document.getElementById('ipInput').value.trim();
-            if (!ip) {
-                showError('Please enter an IP address');
-                return;
-            }
-            
-            showLoading();
-            try {
-                const result = await window.ipLocation(ip);
-                showSuccess(result);
-            } catch (error) {
-                showError(error.message);
-            }
-        };
-        
-        window.testWithGoogle = async function() {
-            showLoading();
-            try {
-                const result = await window.ipLocation('8.8.8.8');
-                showSuccess(result);
-            } catch (error) {
-                showError(error.message);
-            }
-        };
-        
-        function showLoading() {
-            const resultDiv = document.getElementById('result');
-            resultDiv.style.display = 'block';
-            resultDiv.className = 'result loading';
-            resultDiv.innerHTML = '🔄 Detecting IP address and loading location data...';
+        if (!window.ipLocation) {
+          throw new Error('Module default export is undefined');
         }
         
-        function showSuccess(data) {
-            const resultDiv = document.getElementById('result');
-            resultDiv.style.display = 'block';
-            resultDiv.className = 'result success';
-            resultDiv.innerHTML = `
-                <h3>✅ Location Found!</h3>
-                <div class="location-info">
-                    <div class="location-item">
-                        <strong>IP Address:</strong>
-                        ${data.ip} ${data.ip.includes('192.168.') || data.ip.includes('10.') || data.ip.includes('172.') ? '(Private/Local)' : '(Public)'}
-                    </div>
-                    <div class="location-item">
-                        <strong>City:</strong>
-                        ${data.city || 'N/A'}
-                    </div>
-                    <div class="location-item">
-                        <strong>Region:</strong>
-                        ${data.region || 'N/A'}
-                    </div>
-                    <div class="location-item">
-                        <strong>Country:</strong>
-                        ${data.country || 'N/A'}
-                    </div>
-                    <div class="location-item">
-                        <strong>Latitude:</strong>
-                        ${data.lat || 'N/A'}
-                    </div>
-                    <div class="location-item">
-                        <strong>Longitude:</strong>
-                        ${data.lon || 'N/A'}
-                    </div>
-                    <div class="location-item">
-                        <strong>Timezone:</strong>
-                        ${data.timezone || 'N/A'}
-                    </div>
-                    <div class="location-item">
-                        <strong>ISP:</strong>
-                        ${data.isp || 'N/A'}
-                    </div>
-                </div>
-            `;
+      } catch (importError) {
+        console.error('Module import failed:', importError);
+        window.showError(`Failed to load IP geolocation module: ${importError.message}`);
+        
+        // Set a fallback function
+        window.ipLocation = () => {
+          throw new Error('Module not loaded - using fallback');
+        };
+      }
+
+      // Define main functions AFTER module import
+      window.getCurrentLocation = async function () {
+        console.log('getCurrentLocation called');
+        if (!window.ipLocation) {
+          window.showError('IP location module not loaded');
+          return;
         }
         
-        function showError(message) {
-            const resultDiv = document.getElementById('result');
-            resultDiv.style.display = 'block';
-            resultDiv.className = 'result error';
-            resultDiv.innerHTML = `
-                <h3>❌ Error</h3>
-                <p>${message}</p>
-            `;
+        window.showLoading();
+        try {
+          const result = await window.ipLocation();
+          window.showSuccess(result);
+        } catch (error) {
+          console.error('getCurrentLocation error:', error);
+          window.showError(error.message);
         }
+      };
+
+      window.getLocationForIP = async function () {
+        console.log('getLocationForIP called');
+        const ip = document.getElementById("ipInput").value.trim();
+        if (!ip) {
+          window.showError("Please enter an IP address");
+          return;
+        }
+
+        if (!window.ipLocation) {
+          window.showError('IP location module not loaded');
+          return;
+        }
+
+        window.showLoading();
+        try {
+          const result = await window.ipLocation(ip);
+          window.showSuccess(result);
+        } catch (error) {
+          console.error('getLocationForIP error:', error);
+          window.showError(error.message);
+        }
+      };
+
+      window.testWithGoogle = async function () {
+        console.log('testWithGoogle called');
+        if (!window.ipLocation) {
+          window.showError('IP location module not loaded');
+          return;
+        }
+        
+        window.showLoading();
+        try {
+          const result = await window.ipLocation("8.8.8.8");
+          window.showSuccess(result);
+        } catch (error) {
+          console.error('testWithGoogle error:', error);
+          window.showError(error.message);
+        }
+      };
+
+      console.log('Module script completed. Functions defined:', {
+        getCurrentLocation: typeof window.getCurrentLocation,
+        getLocationForIP: typeof window.getLocationForIP,
+        testWithGoogle: typeof window.testWithGoogle,
+        ipLocation: typeof window.ipLocation
+      });
     </script>
-</body>
+  </body>
 </html>
