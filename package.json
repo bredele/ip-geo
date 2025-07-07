@@ -1,10 +1,12 @@
 {
   "name": "ip-geo",
   "version": "1.0.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "cmplr --type-check",
-    "test": "node --test dist/cjs/**/*.test.js"
+    "test": "npx serve & open http://localhost:3000/lib/test.html"
   },
   "dependencies": {
     "cmplr": "^1.3.0",
@@ -14,17 +16,29 @@
     "@types/node": "^24.0.10"
   },
   "description": "Infer a user’s location from their IP address.",
-  "main": "dist/cjs/index.js",
+  "main": "./dist/cjs/index.js",
   "browser": "dist/esm/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bredele/ip-geo.git"
   },
-  "keywords": ["ip", "location"],
+  "keywords": [
+    "ip",
+    "location"
+  ],
   "author": "Olivier Wietrich",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bredele/ip-geo/issues"
   },
-  "homepage": "https://github.com/bredele/ip-geo#readme"
+  "homepage": "https://github.com/bredele/ip-geo#readme",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  }
 }
