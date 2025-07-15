@@ -1,19 +1,17 @@
 {
   "name": "@bredele/ip-geo",
-  "version": "1.0.0",
-  "files": [
-    "dist"
-  ],
+  "version": "1.0.1",
+  "files": ["dist"],
   "scripts": {
     "build": "cmplr --type-check",
     "test": "npx serve"
   },
   "dependencies": {
-    "cmplr": "^1.3.0",
     "ip-leak": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^24.0.10"
+    "@types/node": "^24.0.10",
+    "cmplr": "^1.3.0"
   },
   "description": "Infer a user’s location from their IP address.",
   "main": "./dist/cjs/index.js",
@@ -22,10 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/bredele/ip-geo.git"
   },
-  "keywords": [
-    "ip",
-    "location"
-  ],
+  "keywords": ["ip", "location"],
   "author": "Olivier Wietrich",
   "license": "MIT",
   "bugs": {
